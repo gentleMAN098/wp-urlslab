@@ -14,7 +14,7 @@
 	"extends": [
 		"plugin:@wordpress/eslint-plugin/recommended-with-formatting",
 		"plugin:import/react",
-		"plugin:react-hooks/recommended"
+		"plugin:react-hooks/recommended",
 		"plugin:react/jsx-runtime"
 	],
 	"rules": {
