@@ -13,6 +13,10 @@ import Checkbox from '../../elements/Checkbox';
 import InputField from '../../elements/InputField';
 import { useSelectableItems } from '../../hooks/useSelectableItems';
 import { useQuery } from '@tanstack/react-query';
+import AllCapabilities from '../../components/AllCapabilities';
+import SelectedCapabilities from '../../components/SelectedCapabilities';
+import ActionsBar from '../../components/ActionsBar';
+import EditRole from '../../components/EditRole';
 
 //constant
 const roleSlug = 'permission/role';
@@ -180,75 +184,9 @@ export default function RolesTable() {
   );
 }
 
-function EditRole(props) {
-  return (
-    <div className="urlslab-edit-container">
-      <h3>Edit role:</h3>
-      <InputField disabled style={{ maxWidth: '360px' }} />
-      <Button>
-        <PlusIcon /> Edit name
-      </Button>
-      <Button className={'simple'}>Copy role</Button>
-    </div>
-  );
-}
 
-function ActionsBar(props) {
-  const { selectedCapCount, totalCap, handleFiltering } = props;
-  const { __ } = useI18n();
 
-  return (
-    <div className="urlslab-actionsbar">
-      <SearchField
-        liveUpdate
-        autoFocus
-        onChange={(input) => handleFiltering({ input, type: 'search' })}
-        placeholder={__('Search')}
-      />
-      <Button className={'simple'}>
-        <PlusIcon /> Add capability
-      </Button>
 
-      <p style={{ marginLeft: 'auto' }}>
-        Selected: {selectedCapCount} from {totalCap}
-      </p>
-    </div>
-  );
-}
 
-function SelectedCapabilities(props) {
-  const { selecteditems, toggleSelectItem } = props
-  return (
-    <div className="urlslab-selected-capabilities">
-      <h5 style={{ marginBottom: '15px' }}>selected</h5>
-      {selecteditems.map((item) => (
-        <div className="urlslab-capability-item">
-          <label role="Controlled Checkbox" className={`urlslab-checkbox `}>
-            <input
-              className="urlslab-checkbox-input"
-              type="checkbox"
-              checked={item.isSelected}
-              onChange={() => toggleSelectItem(item)}
-            />
-            <div className="urlslab-checkbox-box"></div>
-            <span className={`urlslab-checkbox-text`}>{item.capabilityName}</span>
-          </label>
-        </div>
-      ))}
-    </div>
-  )
-}
 
-function AllCapabilities(props) {
-  const { data } = props
-  return (
-    <div className="urlslab-all-capabilities">
-      <p style={{ marginBottom: '15px', minWidth: '100%' }}>All capabilities</p>
-      {data.map((item) => (
-        <div className="urlslab-capability-item" style={{ width: '30%' }}>
-          <Checkbox>{item.capabilityName}</Checkbox>
-        </div>
-      ))}
-    </div>
-  )
-}
+
