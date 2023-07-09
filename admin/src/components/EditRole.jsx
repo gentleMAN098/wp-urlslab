@@ -11,7 +11,7 @@ export default function EditRole(props) {
       <Button>
         <EditIcon /> Edit name
       </Button>
-      <Button className={'simple'}>Copy role</Button>
+      <Button  className={'simple'}>Copy role</Button>
     </div>
   );
 }
